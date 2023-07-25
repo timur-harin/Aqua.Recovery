@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct UnlockButton: View {
+struct UnlockButton: View  {
+  @Binding var isLocked: Bool
+  @Binding var isLoading: Bool
+    
 
-  @State private var isLocked = true
-  @State private var isLoading = false
+  
   
   var body: some View {
     GeometryReader { geometry in
@@ -17,6 +19,7 @@ struct UnlockButton: View {
     .onChange(of: isLocked) { isLocked in
       guard !isLocked else { return }
       simulateRequest()
+
     }
   }
   private func simulateRequest() {

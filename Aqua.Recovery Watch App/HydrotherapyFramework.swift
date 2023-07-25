@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import WatchConnectivity
+import SwiftUI
 
 public class WatchConnectivityCoordinator: NSObject, WCSessionDelegate {
     private let session: WCSession
@@ -44,39 +45,63 @@ public enum TimerState {
 }
 
 public class HydrotherapyTimer: ObservableObject {
-@Published public var timerState: TimerState = .inactive
+   @Published public var timerState: TimerState = .inactive
    @Published public var timeRemaining: TimeInterval = 0
+   @Published public var repetitionsTimer: Int = 0
+   
 
    @Published public var hotDurationIndex: Int = 0
    @Published public var coldDurationIndex: Int = 0
    @Published public var repetitionsIndex: Int = 0
+    
 
    private var cancellables = Set<AnyCancellable>()
    private var timerCancellable: AnyCancellable?
 
    private let watchConnectivityCoordinator = WatchConnectivityCoordinator()
 
-
+    
+   
 
     public func startTimer(config: TimerConfig) {
         timerState = .running
-        timeRemaining = config.hotDuration
 
-        // Cancel any previous timer before starting a new one
+        let hotDuration = config.hotDuration
+        let coldDuration = config.coldDuration
+        var repetitions = config.repetitions
+        var isHot = true
+        var currentDuration: TimeInterval = 0
+
+        timeRemaining = hotDuration
+        
         timerCancellable?.cancel()
 
         timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-
-                if self.timeRemaining <= 0 {
-                    self.sendHapticFeedback()
-                    self.timerCancellable?.cancel()
-                    self.timerState = .finished
-                } else {
+                if self.timeRemaining > 0 {
                     self.timeRemaining -= 1
+                    currentDuration += 1
+                } else {
+                    if repetitions > 0 {
+                        if isHot {
+                            self.timeRemaining = coldDuration
+                            isHot = false
+                        } else {
+                            self.timeRemaining = hotDuration
+                            isHot = true
+                            repetitions -= 1
+                            self.repetitionsTimer += 1
+                        }
+                    } else {
+                        self.timerState = .finished
+                        self.timerCancellable?.cancel()
+                        self.sendHapticFeedback()
+                    }
                 }
+            
+                
             }
         self.timerCancellable?.store(in: &cancellables)
     }
@@ -102,20 +127,19 @@ public class HydrotherapyTimer: ObservableObject {
     }
 
     private func sendHapticFeedback() {
-        watchConnectivityCoordinator.announce(bodyPart: "wrist")
+        WKInterfaceDevice.current().play(.success)
    }
     
     public func setPickerValues(from config: TimerConfig) {
-           hotDurationIndex = Int(config.hotDuration / 60)
-           coldDurationIndex = Int(config.coldDuration / 60)
-           repetitionsIndex = config.repetitions - 1
+           hotDurationIndex = Int(config.hotDuration)
+           coldDurationIndex = Int(config.coldDuration)
+           repetitionsIndex = config.repetitions
        }
 
-       // Add a method to get the TimerConfig based on the picker values
        public func getTimerConfig() -> TimerConfig {
-           let hotDuration = Double(hotDurationIndex * 60)
-           let coldDuration = Double(coldDurationIndex * 60)
-           let repetitions = repetitionsIndex + 1
+           let hotDuration = Double(hotDurationIndex)
+           let coldDuration = Double(coldDurationIndex)
+           let repetitions = repetitionsIndex
 
            return TimerConfig(hotDuration: hotDuration, coldDuration: coldDuration, repetitions: repetitions)
        }

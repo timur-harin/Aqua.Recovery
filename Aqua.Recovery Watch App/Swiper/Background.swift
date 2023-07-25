@@ -11,14 +11,14 @@ public struct BackgroundComponent: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(
                     LinearGradient(
-                        colors: [Color.blueBright.opacity(0.6), Color.blueDark.opacity(0.6)],
+                        colors: [Color.red.opacity(0.6), Color.blue.opacity(0.6)],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
                 )
                 .hueRotation(.degrees(hueRotation ? 20 : -20))
 
-            Text("Slide to unlock")
+            Text("Slide to start")
                 .font(.footnote)
                 .bold()
                 .foregroundColor(.white)

@@ -18,17 +18,17 @@ public struct DraggingComponent: View {
 
     public var body: some View {
         RoundedRectangle(cornerRadius: 16)
-            .fill(Color.blueDark)
+            .fill(Color.red)
             .opacity(width / maxWidth)
             .frame(width: width)
             .overlay(
                 Button(action: { }) {
                     ZStack {
-                        image(name: "lock", isShown: isLocked)
+                        image(name: "arrowshape.right.fill", isShown: isLocked)
                         progressView(isShown: isLoading)
-                        image(name: "lock.open", isShown: !isLocked && !isLoading)
+                        image(name: "checkmark", isShown: !isLocked && !isLoading)
                     }
-                    .animation(.easeIn(duration: 0.35).delay(0.55), value: !isLocked && !isLoading)
+                    .animation(.easeIn(duration: 0.35).delay(0.2), value: !isLocked && !isLoading)
                 }
                 .buttonStyle(BaseButtonStyle())
                 .disabled(!isLocked || isLoading),
@@ -49,10 +49,12 @@ public struct DraggingComponent: View {
                             width = minWidth
                             WKInterfaceDevice.current().play(.failure)
                         } else {
+                            
                             WKInterfaceDevice.current().play(.success)
                             withAnimation(.spring().delay(0.5)) {
                                 isLocked = false
                             }
+                            
                         }
                     }
             )
@@ -63,7 +65,7 @@ public struct DraggingComponent: View {
     private func image(name: String, isShown: Bool) -> some View {
         Image(systemName: name)
             .font(.system(size: 20, weight: .regular, design: .rounded))
-            .foregroundColor(Color.blueDark)
+            .foregroundColor(Color.red)
             .frame(width: 42, height: 42)
             .background(RoundedRectangle(cornerRadius: 14).fill(.white))
             .padding(4)
