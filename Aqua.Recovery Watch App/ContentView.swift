@@ -34,6 +34,7 @@ struct ContentView: View {
                     .clipped()
                     .pickerStyle(WheelPickerStyle())
                     .labelsHidden()
+                    .disabled(hydrotherapyTimer.timerState != .inactive)
                     Text("🔥Hot\n(sec)").font(.footnote).multilineTextAlignment(.center)
                 }
                 VStack {
@@ -46,6 +47,7 @@ struct ContentView: View {
                     .clipped()
                     .pickerStyle(WheelPickerStyle())
                     .labelsHidden()
+                    .disabled(hydrotherapyTimer.timerState != .inactive)
                     Text("Laps").font(.footnote).multilineTextAlignment(.center)
                 }
                 VStack {
@@ -58,14 +60,15 @@ struct ContentView: View {
                     .clipped()
                     .pickerStyle(WheelPickerStyle())
                     .labelsHidden()
+                    .disabled(hydrotherapyTimer.timerState != .inactive)
                     Text("❄️Cold\n(sec)").font(.footnote).multilineTextAlignment(.center)
                 }
                     
             }.alignmentGuide(.leading, computeValue: { d in d[.leading] })
                
-            if hydrotherapyTimer.timerState == .inactive {
-                UnlockButton(isLocked: $isLocked, isLoading: $isLoading).onChange(of: isLocked) { isLocked in
-                    if !isLocked {
+            if hydrotherapyTimer.timerState == .inactive{
+                UnlockButton(isLocked: $isLocked, isLoading: $isLoading).onChange(of: isLocked) {
+                    isLocked in if !isLocked {
                         let config = hydrotherapyTimer.getTimerConfig()
                         hydrotherapyTimer.startTimer(config: config)
                     }
@@ -76,12 +79,26 @@ struct ContentView: View {
                     isPaused = false
                     showExitButton = true
                 }
-            } else if hydrotherapyTimer.timerState == .paused {
-                Button("Exit") {
-                    hydrotherapyTimer.stopTimer()
-                    isLocked = true
-                    showExitButton = false
+            }
+            else if hydrotherapyTimer.timerState == .paused {
+                HStack{
+                    Button("Resume") {
+                        hydrotherapyTimer.resumeTimer()
+                        isLocked = false
+                        showExitButton = false
+                    }
+                    Button("Exit") {
+                        hydrotherapyTimer.stopTimer()
+                        isLocked = true
+                        isLoading = false
+                        showExitButton = false
+                    }
                 }
+            }
+        }.onChange(of: hydrotherapyTimer.timerState) { newTimerState in
+            if newTimerState == .finished {
+                isLocked = true
+                hydrotherapyTimer.timerState = .inactive
             }
         }
     }
