@@ -1,28 +1,34 @@
 import SwiftUI
+import HealthKit
 
 struct ContentView: View {
     @EnvironmentObject private var hydrotherapyTimer: HydrotherapyTimer
+    @StateObject private var healthKitHelper = HealthKitHelper()
+    
     @Environment(\.colorScheme) var colorScheme
     
     @State private var isLocked = true
     @State private var isLoading = false
     @State private var isPaused = false
     @State private var showExitButton = false
+    @State private var startDate = Date()
+    
+    
     
     var body: some View {
         VStack {
             Text("Contrast Shower Timer")
                 .font(.headline).multilineTextAlignment(.center)
-                
+            
             Spacer()
-                
+            
             if hydrotherapyTimer.timerState != .inactive {
                 Text("Time Remaining: \(Int(hydrotherapyTimer.timeRemaining))")
                     .font(.caption)
             }
-                
+            
             Spacer()
-                
+            
             HStack {
                 VStack {
                     Picker("Hot Duration", selection: $hydrotherapyTimer.hotDurationIndex) {
@@ -63,9 +69,9 @@ struct ContentView: View {
                     .disabled(hydrotherapyTimer.timerState != .inactive)
                     Text("❄️Cold\n(sec)").font(.footnote).multilineTextAlignment(.center)
                 }
-                    
+                
             }.alignmentGuide(.leading, computeValue: { d in d[.leading] })
-               
+            
             if hydrotherapyTimer.timerState == .inactive{
                 UnlockButton(isLocked: $isLocked, isLoading: $isLoading).onChange(of: isLocked) {
                     isLocked in if !isLocked {
@@ -99,7 +105,9 @@ struct ContentView: View {
             if newTimerState == .finished {
                 isLocked = true
                 hydrotherapyTimer.timerState = .inactive
+                healthKitHelper.saveWorkout(startTime: Date.now, endTime: Date.now, calories: 0, distance: 0)
             }
         }
     }
+
 }

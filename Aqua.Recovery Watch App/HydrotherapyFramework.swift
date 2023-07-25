@@ -75,12 +75,14 @@ public class HydrotherapyTimer: ObservableObject {
                         self.timeRemaining -= 1
                         currentDuration += 1
                     } else {
-                        self.sendHapticFeedback()
+                      
                         if repetitions > 0 {
+                            self.sendHapticFeedback(isHot: false)
                             if isHot {
                                 self.timeRemaining = coldDuration
                                 isHot = false
                             } else {
+                                self.sendHapticFeedback(isHot: true)
                                 self.timeRemaining = hotDuration
                                 isHot = true
                                 repetitions -= 1
@@ -89,7 +91,8 @@ public class HydrotherapyTimer: ObservableObject {
                         } else {
                             self.timerState = .finished
                             self.timerCancellable?.cancel()
-                            self.sendHapticFeedback()
+                            self.soundEnd()
+                            
                         }
                     }
                 } else if self.timerState == .paused {}
@@ -122,8 +125,13 @@ public class HydrotherapyTimer: ObservableObject {
         watchConnectivityCoordinator.announce(bodyPart: bodyPart)
     }
 
-    private func sendHapticFeedback() {
-        WKInterfaceDevice.current().play(.retry)
+    private func sendHapticFeedback(isHot: Bool) {
+        WKInterfaceDevice.current().play(isHot ? .failure : .success)
+    }
+    
+    private func soundEnd(){
+        WKInterfaceDevice.current().play(.success)
+    
     }
 
     public func setPickerValues(from config: TimerConfig) {

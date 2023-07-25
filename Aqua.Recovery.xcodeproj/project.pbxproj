@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39605E0B2A70385700A8C47B /* HelthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39605E0A2A70385600A8C47B /* HelthKitHelper.swift */; };
 		396488D22A6F9F87008B4CC4 /* Aqua.Recovery Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 396488D12A6F9F87008B4CC4 /* Aqua.Recovery Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		396488D72A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488D62A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift */; };
 		396488D92A6F9F87008B4CC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488D82A6F9F87008B4CC4 /* ContentView.swift */; };
@@ -44,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39605E082A70376400A8C47B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39605E0A2A70385600A8C47B /* HelthKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelthKitHelper.swift; sourceTree = "<group>"; };
 		396488CB2A6F9F87008B4CC4 /* Aqua.Recovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aqua.Recovery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396488D12A6F9F87008B4CC4 /* Aqua.Recovery Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aqua.Recovery Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396488D62A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aqua_RecoveryApp.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		396488C42A6F9F86008B4CC4 = {
 			isa = PBXGroup;
 			children = (
+				39605E082A70376400A8C47B /* Info.plist */,
 				396488D52A6F9F87008B4CC4 /* Aqua.Recovery Watch App */,
 				396488CC2A6F9F87008B4CC4 /* Products */,
 			);
@@ -92,6 +96,7 @@
 				396488E92A6F9FE7008B4CC4 /* HydrotherapyFramework.swift */,
 				396488D62A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift */,
 				396488D82A6F9F87008B4CC4 /* ContentView.swift */,
+				39605E0A2A70385600A8C47B /* HelthKitHelper.swift */,
 				396488DA2A6F9F88008B4CC4 /* Assets.xcassets */,
 				396488DC2A6F9F88008B4CC4 /* Preview Content */,
 			);
@@ -220,6 +225,7 @@
 				396488F52A6FABD8008B4CC4 /* UnclockButton.swift in Sources */,
 				396488EF2A6FAB58008B4CC4 /* BaseButton.swift in Sources */,
 				396488D92A6F9F87008B4CC4 /* ContentView.swift in Sources */,
+				39605E0B2A70385700A8C47B /* HelthKitHelper.swift in Sources */,
 				396488F32A6FAB7D008B4CC4 /* Dragging.swift in Sources */,
 				396488D72A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift in Sources */,
 				396488ED2A6FAB37008B4CC4 /* Background.swift in Sources */,
