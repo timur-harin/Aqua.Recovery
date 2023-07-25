@@ -12,6 +12,12 @@
 		396488D92A6F9F87008B4CC4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488D82A6F9F87008B4CC4 /* ContentView.swift */; };
 		396488DB2A6F9F88008B4CC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396488DA2A6F9F88008B4CC4 /* Assets.xcassets */; };
 		396488DE2A6F9F88008B4CC4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396488DD2A6F9F88008B4CC4 /* Preview Assets.xcassets */; };
+		396488EA2A6F9FE7008B4CC4 /* HydrotherapyFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488E92A6F9FE7008B4CC4 /* HydrotherapyFramework.swift */; };
+		396488ED2A6FAB37008B4CC4 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488EC2A6FAB37008B4CC4 /* Background.swift */; };
+		396488EF2A6FAB58008B4CC4 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488EE2A6FAB58008B4CC4 /* BaseButton.swift */; };
+		396488F12A6FAB6A008B4CC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488F02A6FAB6A008B4CC4 /* Color.swift */; };
+		396488F32A6FAB7D008B4CC4 /* Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488F22A6FAB7D008B4CC4 /* Dragging.swift */; };
+		396488F52A6FABD8008B4CC4 /* UnclockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396488F42A6FABD8008B4CC4 /* UnclockButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,12 @@
 		396488D82A6F9F87008B4CC4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		396488DA2A6F9F88008B4CC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		396488DD2A6F9F88008B4CC4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		396488E92A6F9FE7008B4CC4 /* HydrotherapyFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrotherapyFramework.swift; sourceTree = "<group>"; };
+		396488EC2A6FAB37008B4CC4 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		396488EE2A6FAB58008B4CC4 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		396488F02A6FAB6A008B4CC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		396488F22A6FAB7D008B4CC4 /* Dragging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dragging.swift; sourceTree = "<group>"; };
+		396488F42A6FABD8008B4CC4 /* UnclockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnclockButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,8 @@
 		396488D52A6F9F87008B4CC4 /* Aqua.Recovery Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				396488EB2A6FAB10008B4CC4 /* Swiper */,
+				396488E92A6F9FE7008B4CC4 /* HydrotherapyFramework.swift */,
 				396488D62A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift */,
 				396488D82A6F9F87008B4CC4 /* ContentView.swift */,
 				396488DA2A6F9F88008B4CC4 /* Assets.xcassets */,
@@ -92,6 +106,18 @@
 				396488DD2A6F9F88008B4CC4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		396488EB2A6FAB10008B4CC4 /* Swiper */ = {
+			isa = PBXGroup;
+			children = (
+				396488EC2A6FAB37008B4CC4 /* Background.swift */,
+				396488EE2A6FAB58008B4CC4 /* BaseButton.swift */,
+				396488F02A6FAB6A008B4CC4 /* Color.swift */,
+				396488F22A6FAB7D008B4CC4 /* Dragging.swift */,
+				396488F42A6FABD8008B4CC4 /* UnclockButton.swift */,
+			);
+			path = Swiper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +169,7 @@
 				TargetAttributes = {
 					396488CA2A6F9F87008B4CC4 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 					396488D02A6F9F87008B4CC4 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -192,8 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396488EA2A6F9FE7008B4CC4 /* HydrotherapyFramework.swift in Sources */,
+				396488F52A6FABD8008B4CC4 /* UnclockButton.swift in Sources */,
+				396488EF2A6FAB58008B4CC4 /* BaseButton.swift in Sources */,
 				396488D92A6F9F87008B4CC4 /* ContentView.swift in Sources */,
+				396488F32A6FAB7D008B4CC4 /* Dragging.swift in Sources */,
 				396488D72A6F9F87008B4CC4 /* Aqua_RecoveryApp.swift in Sources */,
+				396488ED2A6FAB37008B4CC4 /* Background.swift in Sources */,
+				396488F12A6FAB6A008B4CC4 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 785TZQCGY6;
@@ -390,6 +424,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "timur-harin.Aqua.Recovery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Aqua.Recovery-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -398,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 785TZQCGY6;
@@ -406,6 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "timur-harin.Aqua.Recovery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Aqua.Recovery-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
